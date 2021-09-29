@@ -294,7 +294,35 @@ graphs). Using these three graphs to discuss which of these three
 categorical variables seems to be contributing more to these two peaks
 and explain your reasoning.
 
-**Response**:
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = species, color = species)) +
+  geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_species-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = sex, color = sex)) +
+  geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_sex-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = bill_length_mm, y = island, color = island)) +
+  geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/bill_length_by_island-1.png)<!-- -->
+
+**Response**: Species seems to be contributing most to the peak at 46,
+while the island seems to contribute to the one at 39.
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
