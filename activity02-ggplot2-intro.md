@@ -187,7 +187,8 @@ and compare/contrast your `activity02-ggplot2-intro.Rmd` and
 `activity02-ggplot2-intro.md` files. Which is easier to read? Which
 looks more professional?
 
-**Response**:
+**Response**: The md file is much easier to read and looks better than
+the rmd. The rmd is essentially just a colored notepad.
 
 Now, wouldn’t it be nice if we could combine these two plots so that we
 get the benefits of both!?! That is, how can we overlay the jitterplot
@@ -197,10 +198,35 @@ my *hint*:
 -   Re-create the boxplot with color that you did above, then
 -   *Add* another geometry layer for the jitterplot.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+  geom_boxplot() +
+  geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/box-jitter-combined-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, fill = species)) +
+  geom_jitter() +
+  geom_boxplot()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/box-jitter-combined-2.png)<!-- -->
+
 Play around with doing the jitterplot laid over the boxplot and the
 boxplot laid over the jitterplot. Which do you prefer? Why?
 
-**Response**:
+**Response**: Jitter over box is much better. Data is hidden the other
+way around.
 
 This is getting us closer to one of my favorite plots - the raincloud
 plot. We are not quite ready to create this plot, but we will get there
@@ -214,12 +240,38 @@ default white coloring. In the code chunk below, explore different
 methods to try to create this plot. A hint, all `geom_*` have a
 `mapping` argument.
 
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species, color = species)) +
+  geom_boxplot() +
+  geom_jitter()
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/jitter-colored-only-1.png)<!-- -->
+
+``` r
+ggplot(data = penguins, mapping = aes(x = flipper_length_mm, y = species)) +
+  geom_boxplot() +
+  geom_jitter(mapping = aes(color = species))
+```
+
+    ## Warning: Removed 2 rows containing non-finite values (stat_boxplot).
+
+    ## Warning: Removed 2 rows containing missing values (geom_point).
+
+![](activity02-ggplot2-intro_files/figure-gfm/jitter-colored-only-2.png)<!-- -->
+
 In the above code chunk, continue to play around with having the
 aesthetics mapped in the different layers. For example, how does having
 all of them mapped in the `ggplot` call compared to having these instead
 mapped in the `geom_boxplot` layer? Comment on what you notice.
 
-**Response**:
+**Response**: Having them mapped in the ggplot applies the aes to each
+layer, as opposed to doing it in the geom and applying it to only that
+layer
 
 Knit, stage, commit (with a meaningful commit message),and push
 everything in your **Git** pane to your GitHub repo. Go to GitHub and
